@@ -12,7 +12,10 @@ Trabajo de Fin de Máster — Anderson Steven
 
 SocialLens es una distribución Linux basada en Ubuntu 22.04 LTS, remasterizada con [Cubic](https://github.com/PJ-Singh-001/Cubic), que integra un conjunto curado de herramientas OSINT (*Open Source Intelligence*) especializadas en la investigación de identidades y actividad en redes sociales.
 
-El proyecto no se limita a empaquetar herramientas de terceros: incluye un **desarrollo propio**, el *SocialLens Correlator*, que orquesta varias herramientas de reconocimiento de identidad, fusiona sus resultados y calcula una puntuación de confianza sobre si distintos perfiles pertenecen a la misma persona.
+El proyecto no se limita a empaquetar herramientas de terceros: incluye un **desarrollo propio**, el *([SocialLens Correlator](https://github.com/sudoand3rs0n/Social-Lens/blob/main/src/correlator/correlator.py))*, que orquesta varias herramientas de reconocimiento de identidad, fusiona sus resultados y calcula una puntuación de confianza sobre si distintos perfiles pertenecen a la misma persona. Esta distribución dispone además de un menú *([slmenu](https://github.com/sudoand3rs0n/Social-Lens/blob/main/scripts/slmenu))* para facilitar la interacción entre las herramientas instaladas, así como de un script *([Deploy-SocialLens.ps1](https://github.com/sudoand3rs0n/Social-Lens/blob/main/scripts/Deploy-SocialLens.ps1))* propio para facilitar su despliegue.
+
+<img width="2256" height="1242" alt="image" src="https://github.com/user-attachments/assets/c121dc63-53fd-4fc4-8b7c-8403c3711351" />
+
 
 ## Despliegue rápido (Windows + VMware)
 
@@ -102,7 +105,6 @@ Menú interactivo en terminal que permite lanzar cualquiera de las herramientas 
 ```bash
 slmenu
 ```
-<img width="2256" height="1242" alt="image" src="https://github.com/user-attachments/assets/12fa6f59-2f58-4be2-8ebc-680dcbeb284b" />
 
 ## Licencia
 
