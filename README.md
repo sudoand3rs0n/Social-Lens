@@ -4,6 +4,8 @@
 
 Trabajo de Fin de Máster — Anderson Steven
 
+<img width="1376" height="768" alt="wallpaperSocialLens" src="https://github.com/user-attachments/assets/129365df-1699-445d-ac44-eedd49309932" />
+
 ---
 
 ## Qué es SocialLens
@@ -100,6 +102,7 @@ Menú interactivo en terminal que permite lanzar cualquiera de las herramientas 
 ```bash
 slmenu
 ```
+<img width="2256" height="1242" alt="image" src="https://github.com/user-attachments/assets/12fa6f59-2f58-4be2-8ebc-680dcbeb284b" />
 
 ## Licencia
 
