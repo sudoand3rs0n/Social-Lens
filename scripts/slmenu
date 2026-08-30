@@ -1,0 +1,213 @@
+#!/usr/bin/env bash
+#
+# slmenu — SocialLens
+# Menú lanzador interactivo para las herramientas OSINT preinstaladas
+# en la distro. Evita tener que recordar rutas, entornos virtuales o
+# la sintaxis exacta de cada herramienta.
+#
+# Desarrollado por Anderson Steven — TFM SocialLens
+
+set -uo pipefail
+
+BOLD='\033[1m'
+CYAN='\033[36m'
+GREEN='\033[32m'
+YELLOW='\033[33m'
+RESET='\033[0m'
+
+pause() {
+    echo
+    read -rp "Pulsa ENTER para volver al menú..." _
+}
+
+ask() {
+    # ask "texto del prompt" -> deja el valor introducido en $REPLY
+    read -rp "$1: " REPLY
+}
+
+banner() {
+    clear
+    echo -e "${CYAN}${BOLD}"
+    cat << 'EOF'
+ ___  ___   ___ ___   _   _      _    ___ _  _ ___   __  __ ___ _  _ _   _ 
+/ __|/ _ \ / __|_ _| /_\ | |    | |  | __| \| / __| |  \/  | __| \| | | | |
+\__ \ (_) | (__ | | / _ \| |__  | |__| _|| .` \__ \ | |\/| | _|| .` | |_| |
+|___/\___/ \___|___/_/ \_\____| |____|___|_|\_|___/ |_|  |_|___|_|\_|\___/ 
+EOF
+    echo -e "${RESET}"
+    echo -e "  herramientas OSINT preinstaladas — SocialLens 1.0"
+    echo -e "  (comando: ${BOLD}slmenu${RESET})"
+    echo
+}
+
+menu() {
+    echo -e "${YELLOW}Búsqueda de usernames${RESET}"
+    echo "   1) Sherlock"
+    echo "   2) Maigret"
+    echo "   3) Social-Analyzer"
+    echo
+    echo -e "${YELLOW}Email y teléfono${RESET}"
+    echo "   4) Holehe (email)"
+    echo "   5) Ignorant (teléfono)"
+    echo
+    echo -e "${YELLOW}Instagram${RESET}"
+    echo "   6) Instaloader"
+    echo "   7) Toutatis"
+    echo "   8) Osintgram"
+    echo
+    echo -e "${YELLOW}Organizaciones / dominios${RESET}"
+    echo "   9) theHarvester"
+    echo "  10) CrossLinked (LinkedIn/empresas)"
+    echo "  11) git-hound (secretos en GitHub)"
+    echo
+    echo -e "${YELLOW}Reddit / TikTok / Snapchat${RESET}"
+    echo "  12) URS (Universal Reddit Scraper)"
+    echo "  13) tiktok-hashtag-analysis"
+    echo "  14) snapchat-map-scraper"
+    echo
+    echo -e "${YELLOW}Metadatos y utilidades${RESET}"
+    echo "  15) ExifTool"
+    echo "  16) socid_extractor"
+    echo
+    echo -e "${GREEN}Desarrollo propio${RESET}"
+    echo "  17) SocialLens Correlator"
+    echo
+    echo "   q) Salir"
+    echo
+}
+
+run_sherlock() {
+    ask "Username a buscar"
+    sherlock "$REPLY" --print-found
+}
+
+run_maigret() {
+    ask "Username a buscar"
+    maigret "$REPLY"
+}
+
+run_social_analyzer() {
+    ask "Username a buscar"
+    python3 -m social-analyzer --cli --mode "fast" --username "$REPLY" --output "pretty"
+}
+
+run_holehe() {
+    ask "Email a comprobar"
+    holehe "$REPLY"
+}
+
+run_ignorant() {
+    ask "Código de país (sin '+', ej. 34)"
+    local cc="$REPLY"
+    ask "Número de teléfono (sin prefijo)"
+    ignorant "$cc" "$REPLY"
+}
+
+run_instaloader() {
+    ask "Perfil de Instagram a analizar"
+    instaloader "$REPLY"
+}
+
+run_toutatis() {
+    echo "Toutatis requiere una sesión activa de Instagram (session ID)."
+    ask "Username objetivo"
+    local user="$REPLY"
+    ask "Session ID de tu cuenta de Instagram"
+    toutatis -u "$user" -s "$REPLY"
+}
+
+run_osintgram() {
+    echo "Recuerda haber configurado config/credentials.ini con tu cuenta de Instagram."
+    ask "Username de Instagram a analizar"
+    ( cd /opt/osint-tools/Osintgram && source venv/bin/activate && python3 main.py "$REPLY" )
+}
+
+run_theharvester() {
+    ask "Dominio a investigar (ej. example.com)"
+    ( cd /opt/osint-tools/theHarvester && source venv/bin/activate && theHarvester -d "$REPLY" -b crtsh,certspotter )
+}
+
+run_crosslinked() {
+    ask "Nombre de la empresa (tal como aparece en su LinkedIn)"
+    crosslinked -f '{first}.{last}@empresa.com' "$REPLY"
+}
+
+run_githound() {
+    echo "git-hound requiere un GitHub Personal Access Token configurado en ~/.githound/config.yml"
+    ask "Cadena a buscar (ej. nombre de dominio o palabra clave)"
+    echo "$REPLY" | git-hound
+}
+
+run_urs() {
+    echo "URS funciona mejor con credenciales de la API de Reddit configuradas."
+    ( cd /opt/osint-tools/URS && source venv/bin/activate && python3 -m urs.Urs -e )
+}
+
+run_tiktok() {
+    ask "Hashtag a analizar (sin #)"
+    tiktok-hashtag-analysis "$REPLY"
+}
+
+run_snapchat() {
+    ( cd /opt/osint-tools/snapchat-map-scraper && source env/bin/activate && python3 story_downloader.py --help )
+}
+
+run_exiftool() {
+    ask "Ruta del archivo a analizar"
+    exiftool "$REPLY"
+}
+
+run_socid() {
+    ask "URL del perfil a analizar"
+    socid_extractor --url "$REPLY"
+}
+
+run_correlator() {
+    ask "Username (deja en blanco si no aplica)"
+    local u="$REPLY"
+    ask "Email (deja en blanco si no aplica)"
+    local e="$REPLY"
+
+    local cmd=(python3 /opt/osint-tools/correlator/correlator.py)
+    [[ -n "$u" ]] && cmd+=(--username "$u")
+    [[ -n "$e" ]] && cmd+=(--email "$e")
+
+    if [[ -z "$u" && -z "$e" ]]; then
+        echo "Debes indicar al menos un username o un email."
+    else
+        "${cmd[@]}"
+    fi
+}
+
+main_loop() {
+    while true; do
+        banner
+        menu
+        read -rp "Elige una opción: " choice
+        echo
+        case "$choice" in
+            1) run_sherlock ;;
+            2) run_maigret ;;
+            3) run_social_analyzer ;;
+            4) run_holehe ;;
+            5) run_ignorant ;;
+            6) run_instaloader ;;
+            7) run_toutatis ;;
+            8) run_osintgram ;;
+            9) run_theharvester ;;
+            10) run_crosslinked ;;
+            11) run_githound ;;
+            12) run_urs ;;
+            13) run_tiktok ;;
+            14) run_snapchat ;;
+            15) run_exiftool ;;
+            16) run_socid ;;
+            17) run_correlator ;;
+            q|Q) echo "Hasta luego."; exit 0 ;;
+            *) echo "Opción no válida." ;;
+        esac
+        pause
+    done
+}
+
+main_loop

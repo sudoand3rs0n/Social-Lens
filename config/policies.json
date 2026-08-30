@@ -1,0 +1,371 @@
+{
+  "policies": {
+    "ManagedBookmarks": [
+      {
+        "toplevel_name": "SocialLens OSINT"
+      },
+      {
+        "name": "Herramientas generales OSINT",
+        "children": [
+          {
+            "name": "Búsqueda de imágenes",
+            "children": [
+              {
+                "name": "Google Images",
+                "url": "https://images.google.com"
+              },
+              {
+                "name": "Yandex Images",
+                "url": "https://yandex.com/images/"
+              },
+              {
+                "name": "TinEye",
+                "url": "https://tineye.com"
+              },
+              {
+                "name": "Bing Visual Search",
+                "url": "https://www.bing.com/visualsearch"
+              },
+              {
+                "name": "FotoForensics",
+                "url": "https://fotoforensics.com"
+              },
+              {
+                "name": "Metadata2Go",
+                "url": "https://www.metadata2go.com/"
+              }
+            ]
+          },
+          {
+            "name": "Motores de búsqueda OSINT",
+            "children": [
+              {
+                "name": "OSINT Framework",
+                "url": "https://osintframework.com"
+              },
+              {
+                "name": "IntelTechniques Search Tools",
+                "url": "https://inteltechniques.com/tools/"
+              },
+              {
+                "name": "IntelX.io",
+                "url": "https://intelx.io/"
+              }
+            ]
+          },
+          {
+            "name": "Búsqueda de usernames",
+            "children": [
+              {
+                "name": "Namechk",
+                "url": "https://namechk.com"
+              },
+              {
+                "name": "WhatsMyName",
+                "url": "https://whatsmyname.app"
+              },
+              {
+                "name": "InstantUsername",
+                "url": "https://instantusername.com/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Redes sociales principales",
+        "children": [
+          {
+            "name": "Facebook",
+            "children": [
+              {
+                "name": "Facebook (sitio oficial)",
+                "url": "https://www.facebook.com/"
+              },
+              {
+                "name": "Lookup-id.com",
+                "url": "https://lookup-id.com/"
+              },
+              {
+                "name": "Social Searcher",
+                "url": "https://www.social-searcher.com/"
+              },
+              {
+                "name": "Who Posted What",
+                "url": "https://whopostedwhat.com/"
+              },
+              {
+                "name": "Facebook Graph Searcher (IntelX)",
+                "url": "https://intelx.io/tools?tab=facebook"
+              }
+            ]
+          },
+          {
+            "name": "Instagram",
+            "children": [
+              {
+                "name": "Instagram (sitio oficial)",
+                "url": "https://www.instagram.com/"
+              },
+              {
+                "name": "Dumpor",
+                "url": "https://dumpor.com/"
+              },
+              {
+                "name": "Imginn",
+                "url": "https://imginn.com/"
+              },
+              {
+                "name": "StoriesIG",
+                "url": "https://storiesig.info/"
+              }
+            ]
+          },
+          {
+            "name": "Twitter-X",
+            "children": [
+              {
+                "name": "Twitter-X (sitio oficial)",
+                "url": "https://twitter.com/"
+              },
+              {
+                "name": "memory.lol",
+                "url": "https://memory.lol/app/"
+              },
+              {
+                "name": "Wayback Tweets",
+                "url": "https://waybacktweets.streamlit.app/"
+              },
+              {
+                "name": "tweeterid",
+                "url": "https://tweeterid.com/"
+              },
+              {
+                "name": "Twitter Advanced Search",
+                "url": "https://twitter.com/search-advanced"
+              },
+              {
+                "name": "Social Bearing",
+                "url": "https://socialbearing.com/"
+              },
+              {
+                "name": "OSoMeNet (Indiana University)",
+                "url": "https://osome.iu.edu/tools/osomenet/"
+              }
+            ]
+          },
+          {
+            "name": "LinkedIn",
+            "children": [
+              {
+                "name": "LinkedIn (sitio oficial)",
+                "url": "https://www.linkedin.com/"
+              },
+              {
+                "name": "RecruitEm",
+                "url": "https://recruitin.net/"
+              },
+              {
+                "name": "ReverseContact",
+                "url": "https://www.reversecontact.com/"
+              }
+            ]
+          },
+          {
+            "name": "Pinterest",
+            "children": [
+              {
+                "name": "Pinterest (sitio oficial)",
+                "url": "https://www.pinterest.com/"
+              },
+              {
+                "name": "SourcingLab: Pinterest",
+                "url": "https://sourcinglab.io/search/pinterest"
+              }
+            ]
+          },
+          {
+            "name": "TikTok",
+            "children": [
+              {
+                "name": "TikTok (sitio oficial)",
+                "url": "https://www.tiktok.com/"
+              },
+              {
+                "name": "Exolyt",
+                "url": "https://exolyt.com/"
+              },
+              {
+                "name": "Mavekite",
+                "url": "https://mavekite.com/"
+              }
+            ]
+          },
+          {
+            "name": "Snapchat",
+            "children": [
+              {
+                "name": "Snapchat (sitio oficial)",
+                "url": "https://www.snapchat.com/"
+              },
+              {
+                "name": "Snap Map",
+                "url": "https://map.snapchat.com"
+              },
+              {
+                "name": "Snap Political Ads Library",
+                "url": "https://www.snap.com/en-GB/political-ads"
+              }
+            ]
+          },
+          {
+            "name": "YouTube",
+            "children": [
+              {
+                "name": "YouTube (sitio oficial)",
+                "url": "https://www.youtube.com/"
+              },
+              {
+                "name": "Filmot",
+                "url": "https://filmot.com/"
+              },
+              {
+                "name": "MW Metadata",
+                "url": "https://mattw.io/youtube-metadata/"
+              },
+              {
+                "name": "YouTube Geofind",
+                "url": "https://mattw.io/youtube-geofind/location"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Comunidades y foros",
+        "children": [
+          {
+            "name": "Reddit",
+            "children": [
+              {
+                "name": "Reddit User Analyser",
+                "url": "https://atomiks.github.io/reddit-user-analyser"
+              },
+              {
+                "name": "F5BOT",
+                "url": "https://f5bot.com/"
+              }
+            ]
+          },
+          {
+            "name": "Discord",
+            "children": [
+              {
+                "name": "Disboard",
+                "url": "https://disboard.org/"
+              },
+              {
+                "name": "Top.gg",
+                "url": "https://top.gg/"
+              },
+              {
+                "name": "Unofficial Discord Lookup",
+                "url": "https://discord.id/"
+              }
+            ]
+          },
+          {
+            "name": "Telegram",
+            "children": [
+              {
+                "name": "Lyzem.com",
+                "url": "https://lyzem.com"
+              },
+              {
+                "name": "Tgstat.com",
+                "url": "https://tgstat.com"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Otros recursos",
+        "children": [
+          {
+            "name": "WhatsApp",
+            "children": [
+              {
+                "name": "checkwa",
+                "url": "https://checkwa.online"
+              }
+            ]
+          },
+          {
+            "name": "Reconocimiento facial",
+            "children": [
+              {
+                "name": "PimEyes",
+                "url": "https://pimeyes.com"
+              }
+            ]
+          },
+          {
+            "name": "GitHub",
+            "children": [
+              {
+                "name": "CoderStats",
+                "url": "https://coderstats.github.io/"
+              },
+              {
+                "name": "GH Archive",
+                "url": "https://www.gharchive.org/"
+              }
+            ]
+          },
+          {
+            "name": "Otros",
+            "children": [
+              {
+                "name": "Wayback Machine",
+                "url": "https://web.archive.org"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "DisplayBookmarksToolbar": "always",
+    "ExtensionSettings": {
+      "{a6c4a591-f1b2-4f03-b3ff-767e5bedf4e7}": {
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/user-agent-string-switcher/latest.xpi",
+        "installation_mode": "force_installed"
+      },
+      "exif_viewer@mozilla.doslash.org": {
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/exif-viewer/latest.xpi",
+        "installation_mode": "force_installed"
+      },
+      "jid1-SWdspnBEetWxoA@jetpack": {
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/pinterest-guest/latest.xpi",
+        "installation_mode": "force_installed"
+      },
+      "firefox-compact-dark@mozilla.org": {
+        "installation_mode": "normal_installed"
+      },
+      "wayback_machine@archive.org": {
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/wayback-machine-official/latest.xpi",
+        "installation_mode": "force_installed"
+      },
+      "{1526fba1-ac33-4dfc-99d8-163e6129f7b9}": {
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/reveye-ris/latest.xpi",
+        "installation_mode": "force_installed"
+      }
+    },
+    "Preferences": {
+      "layout.css.prefers-color-scheme.content-override": {
+        "Value": 0,
+        "Status": "default"
+      }
+    }
+  }
+}
