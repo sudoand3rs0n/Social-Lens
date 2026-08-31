@@ -89,14 +89,51 @@ Social-Lens/
 
 Además, Firefox viene preconfigurado con más de 50 marcadores organizados por categoría (búsqueda de imágenes, motores OSINT, redes sociales, comunidades) y 5 extensiones orientadas a investigación, junto con tema oscuro activado por defecto.
 
+### Ubicación de las herramientas instaladas
+
+Según cómo se instaló cada una, quedan repartidas en tres ubicaciones dentro del sistema:
+
+| Ubicación | Herramientas | Cómo se usan |
+|---|---|---|
+| `/usr/local/bin` | Sherlock, Maigret, Social-Analyzer, Holehe, Ignorant, Instaloader, Toutatis, CrossLinked, tiktok-hashtag-analysis, socid_extractor, git-hound, `slmenu` | Disponibles directamente desde cualquier carpeta, sin activar nada |
+| `/usr/bin` | ExifTool | Instalada con `apt`, disponible directamente |
+| `/opt/osint-tools/` | theHarvester, Osintgram, URS, snapchat-map-scraper, `correlator` | Requieren `cd` a su carpeta y activar su propio entorno virtual (`source venv/bin/activate`) antes de usarse |
+
 ## SocialLens Correlator
 
-El desarrollo central del proyecto. Acepta como entrada un username, un email y/o un teléfono, dispara las herramientas correspondientes, fusiona los resultados eliminando duplicados y calcula una puntuación de confianza (0-100).
+El desarrollo central del proyecto. Acepta como entrada un username, un email y/o un teléfono (en cualquier combinación), dispara las herramientas correspondientes, fusiona los resultados eliminando duplicados y calcula una puntuación de confianza (0-100).
+
+### Opciones disponibles
+
+| Opción | Qué hace |
+|---|---|
+| `--username` | Username a investigar. Dispara Sherlock y Maigret. |
+| `--email` | Email a investigar. Dispara Holehe. |
+| `--phone` | Número de teléfono (sin prefijo). Dispara Ignorant. |
+| `--country-code` | Prefijo del país para el teléfono (por defecto `34`). |
+| `--images` | Una o varias rutas de imágenes de perfil, para comparar visualmente mediante hash perceptual. |
+| `--output` | Ruta del fichero donde guardar el informe JSON (por defecto, se genera automáticamente). |
+
+### Ejemplos de uso
 
 ```bash
+# Solo con username (activa Sherlock y Maigret)
 python3 correlator.py --username johndoe92
-python3 correlator.py --username johndoe92 --email john.doe@example.com
+
+# Username + email (activa también Holehe)
+python3 correlator.py --username johndoe92 --email john.doe@gmail.com
+
+# Username + email + teléfono (activa también Ignorant)
+python3 correlator.py --username johndoe92 --email john.doe@gmail.com \
+    --phone 612345678 --country-code 34
+
+# Añadiendo comparación de fotos de perfil
+python3 correlator.py --username johndoe92 --images foto1.jpg foto2.jpg
 ```
+
+Cuantos más vectores de entrada se combinen, más completa es la fusión de resultados y más precisa la puntuación de confianza final, ya que el programa valora especialmente que varios tipos de dato distintos (no solo uno) den resultado positivo sobre el mismo objetivo.
+
+Al terminar, el correlacionador muestra un resumen en la terminal con las plataformas encontradas, marcando con qué herramienta(s) se detectó cada una, y guarda además un informe completo en formato JSON.
 
 ## slmenu
 
