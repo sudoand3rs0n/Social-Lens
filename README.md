@@ -105,6 +105,9 @@ Menú interactivo en terminal que permite lanzar cualquiera de las herramientas 
 ```bash
 slmenu
 ```
+## Enlace a video de demostración
+https://www.youtube.com/watch?v=taqiI-4BGGQ
+<img width="1016" height="761" alt="image" src="https://github.com/user-attachments/assets/8751215d-2f53-42cc-944b-c241bd84b1aa" />
 
 ## Licencia
 
